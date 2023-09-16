@@ -1,6 +1,6 @@
 [submodule "esp-wifi-config"]
 	path = esp-wifi-config
-	url = https://github.com/HomeACcessoryKid/esp-wifi-config
+	url = https://github.com/Doodles2000/esp-wifi-config.git
 	branch = ota-parameters
 [submodule "esp-wolfssl"]
 	path = esp-wolfssl
