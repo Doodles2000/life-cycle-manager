@@ -4,4 +4,5 @@
 	branch = ota-parameters
 [submodule "esp-wolfssl"]
 	path = esp-wolfssl
-	url = https://github.com/HomeACcessoryKid/esp-wolfssl
+	url = https://github.com/Doodles2000/esp-wolfssl.git
+	branch = esp32
