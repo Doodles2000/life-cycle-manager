@@ -5,9 +5,9 @@
 #ifndef OTAVERSION
  #error You must set OTAVERSION=x.y.z of the ota code to match github version tag x.y.z
 #endif
-#define OTAREPO  "HomeACcessoryKid/life-cycle-manager"
+#define OTAREPO  "Doodles2000/life-cycle-manager"
 //#define LCMREPO  "HomeACcessoryKid/life-cycle-manager"
-#define BTLREPO  "HomeACcessoryKid/rboot4lcm"
+#define BTLREPO  "Doodles2000/rboot4lcm"
 #define BTLFILE "rboot.bin"
 #define MAINFILE "otamain.bin"
 #define BOOTFILE "otaboot.bin"
@@ -35,7 +35,7 @@
 #define RECV_BUF_LEN 1025  // current length of amazon URL 724
 #define RANGE "\r\nRange: bytes="
 #define MAXVERSIONLEN 16
-#define SNTP_SERVERS 	"0.pool.ntp.org", "1.pool.ntp.org", "2.pool.ntp.org", "3.pool.ntp.org"
+#define SNTP_SERVERS 	"192.168.10.251", "0.pool.ntp.org", "1.pool.ntp.org", "2.pool.ntp.org"
 
 #define ECDSAKEYLENGTHMAX 128 //to be verified better, example is 120 bytes secP384r1
 #define HASHSIZE  48  //SHA-384
@@ -56,6 +56,8 @@ int active_cert_sector;
 int backup_cert_sector;
 
 void  ota_read_rtc();
+
+void  ota_check_hostname();
 
 void  ota_active_sector();
 

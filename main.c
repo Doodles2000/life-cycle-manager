@@ -74,7 +74,7 @@ void ota_task(void *arg) {
             vTaskDelay(holdoff_time*(1000/portTICK_PERIOD_MS));
             holdoff_time*=HOLDOFF_MULTIPLIER; holdoff_time=(holdoff_time<HOLDOFF_MAX) ? holdoff_time : HOLDOFF_MAX;
             
-            //do we still have a valid internet connexion? dns resolve github... should not be private IP
+            //do we still have a valid internet connection? dns resolve github... should not be private IP
             
             ota_get_pubkey(active_cert_sector); //in case the LCM update is in a cycle
             
@@ -237,6 +237,7 @@ void on_wifi_ready() {
 void pre_wifi_config(void *pvParameters) {
     UDPLGP("--- pre_wifi_config\n");
     ota_read_rtc(); //read RTC outcome from rboot4lcm and act accordingly
+    ota_check_hostname();  //check hostname is in sysparams
     wifi_config_init("LCM", NULL, on_wifi_ready); //expanded it with setting repo-details
     vTaskDelete(NULL);
 }

@@ -73,7 +73,7 @@ cp firmware/otaboot.bin versions1/2.2.5x/otabootbeta.bin
 #
 - Sign the binaries using ecc_signer
 - Note: ecc_signer take three parameters; [file to be signed] [private key.der] [public key.der], generates the hashes, which need to be glued together to create the signature.
-- certs.sector
+- create certs.sector signature file
 ```
 cd versions1/2.2.5x
 cp ../certs.sector .
@@ -83,7 +83,7 @@ printf "%08x" `cat certs.sector | wc -c`| xxd -r -p >>certs.sector.sig
 cat sign >>certs.sector.sig
 rm sign
 ```
--otabootbeta.bin
+- create otabootbeta.bin signature file
 ```
 [path to ecc_signer]/ecc_signer otabootbeta.bin [secret place]/secp384r1prv.der [secret place]/secp384r1pub.der
 mv hash otabootbeta.bin.sig
@@ -91,7 +91,7 @@ printf "%08x" `cat otabootbeta.bin | wc -c`| xxd -r -p >>otabootbeta.bin.sig
 cat sign >>otabootbeta.bin.sig
 rm sign
 ```
-- otaboot.bin
+- create otaboot.bin signature file
 ```
 [path to ecc_signer]/ecc_signer otaboot.bin [secret place]/secp384r1prv.der [secret place]/secp384r1pub.der
 mv hash otaboot.bin.sig

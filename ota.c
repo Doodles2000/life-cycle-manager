@@ -155,6 +155,21 @@ void  ota_read_rtc() {
     if (            reset_otabeta) sysparam_set_data("lcm_beta", NULL,0,0);
 }
 
+void  ota_check_hostname() {
+    //UDPLGP("--- ota_check_hostname\n");
+    sysparam_status_t status;
+    char *defhostn=NULL;
+
+    status = sysparam_get_string("hostname", &defhostn);
+    if (status == SYSPARAM_NOTFOUND) {
+        UDPLGP("--- hostname not found, defaulting\n");
+        sysparam_set_string("hostname","LCM");
+    }
+    sysparam_get_string("hostname", &defhostn);
+    UDPLGP("--- hostname=%s\n",defhostn);
+    free(defhostn);
+}
+
 void  ota_active_sector() {
     UDPLGP("--- ota_active_sector: ");
     extern int active_cert_sector;
